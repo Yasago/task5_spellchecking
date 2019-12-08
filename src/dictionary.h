@@ -20,11 +20,13 @@ public:
     unsigned int operator()( const string& s )  const
     {
         unsigned long num = 0;
-        int p = 1;
+        unsigned long pp = 1;
+        const int p = 31;
 
         for (int i = 0; i < s.size(); ++i)
         {
-            num += (s[i] * p) % INT64_MAX;
+            num += (s[i] - 'a' + 1) * pp;
+            pp *= p;
         }
 
         return num;
